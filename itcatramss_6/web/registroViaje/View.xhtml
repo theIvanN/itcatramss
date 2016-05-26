@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RegistroViajeViewDlg" widgetVar="RegistroViajeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRegistroViajeTitle}">
+            <h:form id="RegistroViajeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{registroViajeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRegistroViajeLabel_idregistroViaje}"/>
+                        <h:outputText value="#{registroViajeController.selected.idregistroViaje}" title="#{bundle.ViewRegistroViajeTitle_idregistroViaje}"/>
+                        <h:outputText value="#{bundle.ViewRegistroViajeLabel_fechaIda}"/>
+                        <h:outputText value="#{registroViajeController.selected.fechaIda}" title="#{bundle.ViewRegistroViajeTitle_fechaIda}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewRegistroViajeLabel_fechaLlegada}"/>
+                        <h:outputText value="#{registroViajeController.selected.fechaLlegada}" title="#{bundle.ViewRegistroViajeTitle_fechaLlegada}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewRegistroViajeLabel_observacionViaje}"/>
+                        <h:outputText value="#{registroViajeController.selected.observacionViaje}" title="#{bundle.ViewRegistroViajeTitle_observacionViaje}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RegistroViajeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ValeCombustibleCreateDlg" widgetVar="ValeCombustibleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateValeCombustibleTitle}">
+            <h:form id="ValeCombustibleCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{valeCombustibleController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateValeCombustibleLabel_idvaleCombustible}" for="idvaleCombustible" />
+                        <p:inputText id="idvaleCombustible" value="#{valeCombustibleController.selected.idvaleCombustible}" title="#{bundle.CreateValeCombustibleTitle_idvaleCombustible}" required="true" requiredMessage="#{bundle.CreateValeCombustibleRequiredMessage_idvaleCombustible}"/>
+                        <p:outputLabel value="#{bundle.CreateValeCombustibleLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{valeCombustibleController.selected.valor}" title="#{bundle.CreateValeCombustibleTitle_valor}" required="true" requiredMessage="#{bundle.CreateValeCombustibleRequiredMessage_valor}"/>
+                        <p:outputLabel value="#{bundle.CreateValeCombustibleLabel_fechaEmision}" for="fechaEmision" />
+                        <p:calendar id="fechaEmision" pattern="MM/dd/yyyy HH:mm:ss" value="#{valeCombustibleController.selected.fechaEmision}" title="#{bundle.EditValeCombustibleTitle_fechaEmision}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{valeCombustibleController.create}" value="#{bundle.Save}" update="display,:ValeCombustibleListForm:datalist,:growl" oncomplete="handleSubmit(args,'ValeCombustibleCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ValeCombustibleCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

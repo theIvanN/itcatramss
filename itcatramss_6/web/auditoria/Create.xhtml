@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AuditoriaCreateDlg" widgetVar="AuditoriaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAuditoriaTitle}">
+            <h:form id="AuditoriaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{auditoriaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAuditoriaLabel_idauditoria}" for="idauditoria" />
+                        <p:inputText id="idauditoria" value="#{auditoriaController.selected.idauditoria}" title="#{bundle.CreateAuditoriaTitle_idauditoria}" required="true" requiredMessage="#{bundle.CreateAuditoriaRequiredMessage_idauditoria}"/>
+                        <p:outputLabel value="#{bundle.CreateAuditoriaLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy HH:mm:ss" value="#{auditoriaController.selected.fecha}" title="#{bundle.EditAuditoriaTitle_fecha}" required="true" requiredMessage="#{bundle.EditAuditoriaRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateAuditoriaLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{auditoriaController.selected.descripcion}" title="#{bundle.CreateAuditoriaTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateAuditoriaRequiredMessage_descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{auditoriaController.create}" value="#{bundle.Save}" update="display,:AuditoriaListForm:datalist,:growl" oncomplete="handleSubmit(args,'AuditoriaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AuditoriaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
