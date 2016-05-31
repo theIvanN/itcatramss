@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MantenimientoViewDlg" widgetVar="MantenimientoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMantenimientoTitle}">
+            <h:form id="MantenimientoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mantenimientoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMantenimientoLabel_idmantenimiento}"/>
+                        <h:outputText value="#{mantenimientoController.selected.idmantenimiento}" title="#{bundle.ViewMantenimientoTitle_idmantenimiento}"/>
+                        <h:outputText value="#{bundle.ViewMantenimientoLabel_nombreTaller}"/>
+                        <h:outputText value="#{mantenimientoController.selected.nombreTaller}" title="#{bundle.ViewMantenimientoTitle_nombreTaller}"/>
+                        <h:outputText value="#{bundle.ViewMantenimientoLabel_fechaInicio}"/>
+                        <h:outputText value="#{mantenimientoController.selected.fechaInicio}" title="#{bundle.ViewMantenimientoTitle_fechaInicio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMantenimientoLabel_fechaEntrega}"/>
+                        <h:outputText value="#{mantenimientoController.selected.fechaEntrega}" title="#{bundle.ViewMantenimientoTitle_fechaEntrega}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMantenimientoLabel_observacion}"/>
+                        <h:outputText value="#{mantenimientoController.selected.observacion}" title="#{bundle.ViewMantenimientoTitle_observacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MantenimientoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
