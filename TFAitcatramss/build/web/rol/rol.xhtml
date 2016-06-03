@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/template/plantilla.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+                <p:panel id="panel" header="Agregar un nuevo Rol">
+                    <h:form id="form">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="text1" value="ID:" />
+                            <p:inputText id="text1" value="#{manejadorRol.rol.idrol}" required="true" label="Firstname" />
+
+                            <p:outputLabel for="text2" value="Nombre del rol:" />
+                            <p:inputText id="text2" value="#{manejadorRol.rol.rolNombre}" required="true" label="Surname"/>
+
+                            <h:commandButton actionListener="#{manejadorRol.eliminar()}" value="Guardar"/>
+                        </h:panelGrid>
+                    </h:form>
+                </p:panel>
+                                <!-- TABLA NO SE SI ESTA BUENA -->
+                                <p:dataTable id="datalist" value="#{manejadorRol.rolTodos()}" var="rol" emptyMessage="No Registros"
+                             paginator="true"
+                
+                             
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             >
+                    <p:column>
+                        <h:outputText value="#{rol.idrol}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{rol.rolNombre}"/>
+                    </p:column>
+                </p:dataTable>
+                <!-- TABLA NO SE SI ESTA BUENA -->
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>

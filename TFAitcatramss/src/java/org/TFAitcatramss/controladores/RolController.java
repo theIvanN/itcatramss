@@ -10,14 +10,19 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+//import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.context.RequestContext;
+
 
 @Named("rolController")
 @SessionScoped
@@ -27,6 +32,60 @@ public class RolController implements Serializable {
     private org.TFAitcatramss.dao.RolFacade ejbFacade;
     private List<Rol> items = null;
     private Rol selected;
+    private Rol rol;
+    
+    private String idRol;
+    private String rolNombre;
+ 
+    // LEL
+    @PostConstruct
+    public void init() {
+        rol = new Rol();
+    }
+    
+    public Rol getRol() {
+        return rol;
+    }
+    
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public String getIdrol() {
+        return idRol;
+    }
+
+    public void setIdrol(String idrol) {
+        this.idRol = idrol;
+    }
+
+    public String getRolNombre() {
+        return rolNombre;
+    }
+
+    public void setRolNombre(String rol) {
+        this.rolNombre = rol;
+    }
+    
+    public void rolGuardar() {
+        //TipoDiagnostico tipoDiagnsticoSeleccionado = new TipoDiagnostico(idTipoDiagnostico);
+     // TipoDiagnostico tipoDiagnsticoSeleccionado = new TipoDiagnostico(diagnosticoRegistro.getCodigoTipoDiagnostico().getCodigoTipoDiagnostico());
+        rol.setIdrol(idRol); 
+        rol.setRolNombre(rolNombre); 
+        //ejbFacade.create(rol);
+        FacesMessage msg = new FacesMessage(idRol.concat(rolNombre));
+//        rol = new Rol();
+//        diagnosticoTodos();
+//        idRol = "";
+//        FacesMessage msg = new FacesMessage("Registro Guardado");
+       FacesContext.getCurrentInstance().addMessage(null, msg);
+//        RequestContext context = RequestContext.getCurrentInstance();
+//        context.update("f2:tblDiagnostico");
+//        context.execute("PF('dlgGuardarDiagnostico').hide();");
+    }
+
+    
+    // LEL
 
     public RolController() {
     }

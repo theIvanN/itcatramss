@@ -5,9 +5,11 @@
  */
 package org.TFAitcatramss.dao;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.TFAitcatramss.entidades.Rol;
 
 /**
@@ -27,6 +29,20 @@ public class RolFacade extends AbstractFacade<Rol> {
 
     public RolFacade() {
         super(Rol.class);
+    }
+    
+    // NUESTRO CODIGO
+    
+    public List<Rol> listarRol() {
+        List<Rol> lista = null;
+        try {
+            Query q = em.createNamedQuery("Rol.findAll");
+            lista = q.getResultList();
+            //System.out.println("asdf");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
     }
     
 }

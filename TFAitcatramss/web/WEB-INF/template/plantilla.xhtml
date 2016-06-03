@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">Top</ui:insert>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <h2 class="first">Menu</h2>
+                    <p:accordionPanel>
+                        <p:tab title="Auditoria">
+                            <h:link outcome="/auditoria/List" value="Auditoria"/>
+                        </p:tab>
+                        <p:tab title="Chofer">
+                            <h:link outcome="/chofer/List" value="Chofer"/>
+                        </p:tab>
+                        <p:tab title="Estados">
+                            <h:link outcome="/estado/List" value="Estado"/>
+                        </p:tab>
+                        <p:tab title="Sucursal">
+                            <h:link outcome="/sucursal/List" value="Sucursal"/>
+                        </p:tab>
+                        <p:tab title="Usuario">
+                            <h:link outcome="/usuario/List" value="Usuario"/>
+                            <br />
+                            <h:link outcome="/rol/List" value="Rol"/>
+                            <br />
+                            <h:link outcome="/intentoLogin/List" value="Intento de inicio de sesion"/>
+                        </p:tab>
+                        <p:tab title="Vehiculo">
+                            <h:link outcome="/vehiculo/List" value="Vehiculo"/>
+                            <br />
+                            <h:link outcome="/color/List" value="Color"/>
+                            <br />
+                            <h:link outcome="/mantenimiento/List" value="Mantenimiento"/>
+                            <br />
+                            <h:link outcome="/marca/List" value="Marca"/>
+                            <br />
+                            <h:link outcome="/tipo/List" value="Tipo"/>
+                        </p:tab>
+                        <p:tab title="Viaje">
+                            <h:link outcome="/registroViaje/List" value="Registro de Viajes"/>
+                            <br />
+                            <h:link outcome="/reserva/List" value="Reserva de viajes"/>
+                        </p:tab>
+                        <p:tab title="Vales de combustible">
+                            <h:link outcome="/valeCombustible/List" value="Vales de Combustible"/>
+                        </p:tab>
+                    </p:accordionPanel>
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom"><center><strong>ITCATRAMSS 2016</strong></center></ui:insert>
+        </div>
+
+    </h:body>
+
+</html>
