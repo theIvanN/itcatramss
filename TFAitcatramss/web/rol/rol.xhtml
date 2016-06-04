@@ -15,24 +15,10 @@
             </ui:define>
 
             <ui:define name="content">
-                <p:panel id="panel" header="Agregar un nuevo Rol">
-                    <h:form id="form">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel for="text1" value="ID:" />
-                            <p:inputText id="text1" value="#{manejadorRol.rol.idrol}" required="true" label="Firstname" />
-
-                            <p:outputLabel for="text2" value="Nombre del rol:" />
-                            <p:inputText id="text2" value="#{manejadorRol.rol.rolNombre}" required="true" label="Surname"/>
-
-                            <h:commandButton actionListener="#{manejadorRol.eliminar()}" value="Guardar"/>
-                        </h:panelGrid>
-                    </h:form>
-                </p:panel>
-                                <!-- TABLA NO SE SI ESTA BUENA -->
-                                <p:dataTable id="datalist" value="#{manejadorRol.rolTodos()}" var="rol" emptyMessage="No Registros"
+                <h1><center>Listado de roles</center></h1>
+                <br />
+                <p:dataTable id="datalist" value="#{manejadorRol.rolTodos()}" var="rol" emptyMessage="No Registros"
                              paginator="true"
-                
-                             
                              rows="10"
                              rowsPerPageTemplate="10,20,30,40,50"
                              >
@@ -42,8 +28,28 @@
                     <p:column>
                         <h:outputText value="#{rol.rolNombre}"/>
                     </p:column>
+                    <p:column>
+                        <h:form id="form">
+                        <h:commandButton actionListener="#{manejadorRol.actualizar()}" value="Modificar"/>
+                        <h:commandButton actionListener="#{manejadorRol.eliminar(rol)}" value="Eliminar" onclick="alert('¿Seguro de eliminar este campo?')"/>
+                        </h:form>
+                    </p:column>
                 </p:dataTable>
-                <!-- TABLA NO SE SI ESTA BUENA -->
+                <br />
+                <center>
+                <h:form id="form">
+                    <h1>Agregar un rol nuevo</h1>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="text1" value="ID:" />
+                        <p:inputText id="text1" value="#{manejadorRol.rol.idrol}" required="true" label="Firstname" />
+
+                        <p:outputLabel for="text2" value="Nombre del rol:" />
+                        <p:inputText id="text2" value="#{manejadorRol.rol.rolNombre}" required="true" label="Surname"/>
+
+                        <h:commandButton actionListener="#{manejadorRol.guardar()}" value="Guardar"/>
+                    </h:panelGrid>
+                </h:form>
+                </center>
             </ui:define>
             
         </ui:composition>

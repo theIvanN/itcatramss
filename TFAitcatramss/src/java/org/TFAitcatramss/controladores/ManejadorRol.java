@@ -94,10 +94,10 @@ public class ManejadorRol {
         return null; //retorno null ya que debo de retornar String
     } 
     
-    public String eliminar() {
+    public String eliminar(Rol role) {
         try {
    
-            facade.remove(rol); //aca guardo en la base de datos
+            facade.remove(role); //aca guardo en la base de datos
             LOGGER.log(Level.SEVERE, "datos eliminados ");
             clearForm(); //aca igual al ingeniero limpio la variable rol
         } catch (Exception e) {
